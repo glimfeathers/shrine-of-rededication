@@ -41,6 +41,11 @@ GlobalVariable Property GF01_SoR_RedguardBaseMagicka Auto
 GlobalVariable Property GF01_SoR_RedguardBaseHealth Auto
 GlobalVariable Property GF01_SoR_RedguardBaseStamina Auto
 
+GlobalVariable Property GF01_SoR_CustomRaceBaseMagicka Auto
+GlobalVariable Property GF01_SoR_CustomRaceBaseHealth Auto
+GlobalVariable Property GF01_SoR_CustomRaceBaseStamina Auto
+
+GlobalVariable Property GF01_SoR_VanillaPreset Auto
 
 Message Property GF01_SoR_StatsMessage Auto
 Message Property GF01_SoR_LoopMessage Auto
@@ -61,6 +66,17 @@ Race Property NordRace Auto
 Race Property OrcRace Auto
 Race Property RedguardRace Auto
 
+Race Property HighElfRaceVampire Auto
+Race Property ArgonianRaceVampire Auto
+Race Property WoodElfRaceVampire Auto
+Race Property BretonRaceVampire Auto
+Race Property DarkElfRaceVampire Auto
+Race Property ImperialRaceVampire Auto
+Race Property KhajiitRaceVampire Auto
+Race Property NordRaceVampire Auto
+Race Property OrcRaceVampire Auto
+Race Property RedguardRaceVampire Auto
+
  Event OnActivate(ObjectReference akActionRef)
    openMenu()
  endEvent
@@ -77,6 +93,7 @@ Function openMenu(int aiButton = 1)
 	float playerLevel =  PlayerRef.GetLevel()
 	int soulsCost = Math.Ceiling(playerLevel/4.0)
 	float  playerSouls =  PlayerRef.GetActorValue("DragonSouls")
+	bool isVanilla =  GF01_SoR_VanillaPreset.GetValue() as Bool
 	
 	if playerLevel > 1
 		aiButton = GF01_SoR_StatsMessage.show(soulsCost)
@@ -93,57 +110,41 @@ Function openMenu(int aiButton = 1)
 			float iMax = playerLevel - 1
 						
 			PlayerRef.ForceActorValue("DragonSouls", playerSouls - SoulsCost )
-			
-			if playerRace == HighElfRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_AltmerBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_AltmerBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_AltmerBaseStamina.GetValueInt() as Float)
 
-			elseif playerRace == ArgonianRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_ArgonianBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_ArgonianBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_ArgonianBaseStamina.GetValueInt() as Float)
-
-			elseif playerRace == WoodElfRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_BosmerBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_BosmerBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_BosmerBaseStamina.GetValueInt() as Float)
-
-			elseif playerRace == BretonRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_BretonBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_BretonBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_BretonBaseStamina.GetValueInt() as Float)
-
-			elseif playerRace == DarkElfRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_DunmerBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_DunmerBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_DunmerBaseStamina.GetValueInt() as Float)
+			if isVanilla
+				resetAttributes(100.0, 100.0, 100.0)
 	
-			elseif playerRace == ImperialRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_ImperialBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_ImperialBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_ImperialBaseStamina.GetValueInt() as Float)
+			elseif playerRace == HighElfRace ||  playerRace == HighElfRaceVampire
+				resetAttributes(GF01_SoR_AltmerBaseMagicka.GetValueInt() as Float,  GF01_SoR_AltmerBaseHealth.GetValueInt() as Float , GF01_SoR_AltmerBaseStamina.GetValueInt() as Float)
 
-			elseif playerRace == KhajiitRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_KhajiitBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_KhajiitBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_KhajiitBaseStamina.GetValueInt() as Float)
-
-			elseif playerRace == NordRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_NordBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_NordBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_NordBaseStamina.GetValueInt() as Float)
-
-			elseif playerRace == OrcRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_OrsimerBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_OrsimerBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_OrsimerBaseStamina.GetValueInt() as Float)
-
-			elseif playerRace == RedguardRace
-				PlayerRef.SetActorValue("Magicka", GF01_SoR_RedguardBaseMagicka.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Health", GF01_SoR_RedguardBaseHealth.GetValueInt() as Float)
-				PlayerRef.SetActorValue("Stamina",GF01_SoR_RedguardBaseStamina.GetValueInt() as Float)
+			elseif playerRace == ArgonianRace ||  playerRace == ArgonianRaceVampire
+				resetAttributes(GF01_SoR_ArgonianBaseMagicka.GetValueInt() as Float,  GF01_SoR_ArgonianBaseHealth.GetValueInt() as Float , GF01_SoR_ArgonianBaseStamina.GetValueInt() as Float)
+				
+			elseif playerRace == WoodElfRace ||  playerRace == WoodElfRaceVampire
+				resetAttributes(GF01_SoR_BosmerBaseMagicka.GetValueInt() as Float,  GF01_SoR_BosmerBaseHealth.GetValueInt() as Float , GF01_SoR_BosmerBaseStamina.GetValueInt() as Float)
 			
+			elseif playerRace == BretonRace ||  playerRace == BretonRaceVampire
+				resetAttributes(GF01_SoR_BretonBaseMagicka.GetValueInt() as Float,  GF01_SoR_BretonBaseHealth.GetValueInt() as Float , GF01_SoR_BretonBaseStamina.GetValueInt() as Float)
+				
+			elseif playerRace == DarkElfRace ||  playerRace == DarkElfRaceVampire
+				resetAttributes(GF01_SoR_DunmerBaseMagicka.GetValueInt() as Float,  GF01_SoR_DunmerBaseHealth.GetValueInt() as Float , GF01_SoR_DunmerBaseStamina.GetValueInt() as Float)
+	
+			elseif playerRace == ImperialRace ||  playerRace == ImperialRaceVampire
+				resetAttributes(GF01_SoR_ImperialBaseMagicka.GetValueInt() as Float,  GF01_SoR_ImperialBaseHealth.GetValueInt() as Float , GF01_SoR_ImperialBaseStamina.GetValueInt() as Float)
+			
+			elseif playerRace == KhajiitRace ||  playerRace == KhajiitRaceVampire
+				resetAttributes(GF01_SoR_KhajiitBaseMagicka.GetValueInt() as Float,  GF01_SoR_KhajiitBaseHealth.GetValueInt() as Float , GF01_SoR_KhajiitBaseStamina.GetValueInt() as Float)
+				
+			elseif playerRace == NordRace ||  playerRace == NordRaceVampire
+				resetAttributes(GF01_SoR_NordBaseMagicka.GetValueInt() as Float,  GF01_SoR_NordBaseHealth.GetValueInt() as Float , GF01_SoR_NordBaseStamina.GetValueInt() as Float)
+
+			elseif playerRace == OrcRace ||  playerRace == OrcRaceVampire
+				resetAttributes(GF01_SoR_OrsimerBaseMagicka.GetValueInt() as Float,  GF01_SoR_OrsimerBaseHealth.GetValueInt() as Float , GF01_SoR_OrsimerBaseStamina.GetValueInt() as Float)
+			
+			elseif playerRace == RedguardRace ||  playerRace == RedguardRaceVampire
+				resetAttributes(GF01_SoR_RedguardBaseMagicka.GetValueInt() as Float,  GF01_SoR_RedguardBaseHealth.GetValueInt() as Float , GF01_SoR_RedguardBaseStamina.GetValueInt() as Float)
+			else 			
+				resetAttributes(GF01_SoR_CustomRaceBaseMagicka.GetValueInt() as Float,  GF01_SoR_CustomRaceBaseHealth.GetValueInt() as Float , GF01_SoR_CustomRaceBaseStamina.GetValueInt() as Float)
 			EndIf
 
 			While (i < iMax)	

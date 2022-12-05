@@ -43,6 +43,11 @@ GlobalVariable Property GF01_SoR_RedguardBaseMagicka Auto
 GlobalVariable Property GF01_SoR_RedguardBaseHealth Auto
 GlobalVariable Property GF01_SoR_RedguardBaseStamina Auto
 
+GlobalVariable Property GF01_SoR_CustomRaceBaseMagicka Auto
+GlobalVariable Property GF01_SoR_CustomRaceBaseHealth Auto
+GlobalVariable Property GF01_SoR_CustomRaceBaseStamina Auto
+
+
 Event OnConfigInit()
 	
 	GF01_SoR_VanillaPreset.SetValueInt(GetModSettingBool("GF01_SoR_VanillaPreset:Main") as Int)
@@ -87,11 +92,16 @@ Event OnConfigInit()
 	GF01_SoR_RedguardBaseHealth.SetValue(GetModSettingFloat("fRedguardBaseHealth:Main"))
 	GF01_SoR_RedguardBaseStamina.SetValue(GetModSettingFloat("fRedguardBaseStamina:Main"))
 
+	GF01_SoR_CustomRaceBaseMagicka.SetValue(GetModSettingFloat("fCustomRaceBaseMagicka:Main"))
+	GF01_SoR_CustomRaceBaseHealth.SetValue(GetModSettingFloat("fCustomRaceBaseHealth:Main"))
+	GF01_SoR_CustomRaceBaseStamina.SetValue(GetModSettingFloat("fCustomRaceBaseStamina:Main"))
+
 EndEvent
 
 Event OnSettingChange(string a_ID)
 	if a_ID == "bVanillaPreset:Main"
 		GF01_SoR_VanillaPreset.SetValueInt(GetModSettingBool(a_ID) as Int)
+
 	elseif a_ID == "fAltmerBaseMagicka:Main"
 		GF01_SoR_AltmerBaseMagicka.SetValue(GetModSettingFloat(a_ID))
 	elseif a_ID == "fAltmerBaseHealth:Main"
@@ -161,6 +171,13 @@ Event OnSettingChange(string a_ID)
 		GF01_SoR_RedguardBaseHealth.SetValue(GetModSettingFloat(a_ID))
 	elseif a_ID == "fRedguardBaseStamina:Main"
 		GF01_SoR_RedguardBaseStamina.SetValue(GetModSettingFloat(a_ID))
+
+	elseif a_ID == "CustomRaceBaseMagicka:Main"
+		GF01_SoR_CustomRaceBaseMagicka.SetValue(GetModSettingFloat(a_ID))
+	elseif a_ID == "fCustomRaceBaseHealth:Main"
+		GF01_SoR_CustomRaceBaseHealth.SetValue(GetModSettingFloat(a_ID))
+	elseif a_ID == "fCustomRaceBaseStamina:Main"
+		GF01_SoR_CustomRaceBaseStamina.SetValue(GetModSettingFloat(a_ID))
 
 	 endif
 EndEvent
