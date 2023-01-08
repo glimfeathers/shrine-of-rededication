@@ -1,4 +1,3 @@
 $Magicka Magicka
 $Health Health
 $Stamina Stamina
-$CarryWeight Carry Weight
