@@ -15,9 +15,24 @@ Message Property GF01_SoR_ConfirmStaminaMessage Auto
 
 Actor Property PlayerRef Auto
 
- Event OnActivate(ObjectReference akActionRef)
-   openMenu()
- endEvent
+Idle Property IdleGreybeardWordTeach Auto
+Idle Property idleWave  Auto
+Idle Property IdleStop_Loose Auto
+
+Function startAnimation()
+	if PlayerRef.GetAnimationVariableInt("i1stPerson") == 1
+		Game.ForceThirdPerson()
+	endIf
+	PlayerRef.PlayIdle(idleWave)
+endFunction
+
+Function endAnimation()
+	if PlayerRef.GetAnimationVariableInt("i1stPerson") == 1
+		Game.ForceFirstPerson()	
+	endIf
+	PlayerRef.PlayIdle(IdleStop_Loose)
+endFunction
+
 
 Function resetAttributes(float rM, float rH, float rS, float cW)
 	PlayerRef.SetActorValue("Magicka", rM)
@@ -25,6 +40,10 @@ Function resetAttributes(float rM, float rH, float rS, float cW)
 	PlayerRef.SetActorValue("Stamina", rS)
 	PlayerRef.SetActorValue("CarryWeight", cW)
 endFunction
+
+ Event OnActivate(ObjectReference akActionRef)
+   openMenu()
+ endEvent
 
 Function openMenu(int aiButton = 1)
 
@@ -54,14 +73,21 @@ Function openMenu(int aiButton = 1)
 				resetAttributes(100.0, 100.0, 100.0, 300.0)
 			else				
 				resetAttributes(GF01_SoR_BaseMagicka.GetValueInt() as Float,  GF01_SoR_BaseHealth.GetValueInt() as Float , GF01_SoR_BaseStamina.GetValueInt() as Float, GF01_SoR_BaseCarryWeight.GetValueInt() as Float)	
-			endIf	
+			endIf			
+	
+			startAnimation()
+			Utility.Wait(2.5)	
 		
 			While (i < iMax)	
 				openLoopMenu(2, iMax - i,  PlayerRef.GetBaseActorValue("Magicka"), playerRef.GetBaseActorValue("Health"), playerRef.GetBaseActorValue("Stamina"), playerRef.GetBaseActorValue("CarryWeight"))
 				i += 1
 			EndWhile
+			
 			debug.messagebox("Attributes redistributed.")
-		EndIf
+			Utility.Wait(2.5)	
+			endAnimation()
+		
+			EndIf
 	EndIf
 
 endFunction
