@@ -1,597 +1,124 @@
 {
-  "$schema": "https://raw.githubusercontent.com/Exit-9B/MCM-Helper/main/docs/config.schema.json",
-  "modName": "GF01_SoR_ShrineofRededication",          
-  "displayName": "Shrine of Rededication",   
-  "minMcmVersion": 13,                       
-  "content": [
+    "$schema": "https://raw.githubusercontent.com/Exit-9B/MCM-Helper/main/docs/config.schema.json",
+    "modName": "GF01_SoR_ShrineofRededication",          
+    "displayName": "Shrine of Rededication",   
+    "minMcmVersion": 13,                       
+    "content": [
         {
-        "text": "Starting Attributes",
-        "type": "header"
+            "text": "Preset",
+            "type": "header"
         },
         {
-          "text": "Imperial",
-          "type": "header"
+            "text": "Animations",
+            "type": "header"
         },
         {
-          "id": "bVanillaPreset:Main",
-          "text": "Vanilla",
-          "type": "toggle",
-          "help": "on if vanilla - off if custom",
-          "valueOptions": {
-            "sourceType": "ModSettingBool"
-          },
-          "groupControl": 1      
+            "id": "bVanillaPreset:Main",
+            "text": "Vanilla",
+            "type": "toggle",
+            "help": "on if vanilla - off if custom",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            },
+            "groupControl": 1      
         },
         {
-          "id": "fImperialBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
+            "id": "bPlayAnimation:Main",
+            "text": "Enable",
+            "type": "toggle",
+            "help": "on if play - off if not",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            },
+            "groupControl": 2      
         },
         {
-          "type": "empty"
+           "type": "empty"
         },
         {
-          "id": "fImperialBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
+            "text": "Demo Enum",
+            "type": "enum",
+            "help": "An enum allows a single selection from multiple choices.",
+            "valueOptions": {
+                "options": ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"],
+                "shortNames": ["1", "2", "3", "4", "5"]  
+            }
         },
         {
-          "text": "Altmer",
-          "type": "header"
+            "text": "Advanced Settings",
+            "type": "header"
         },
         {
-          "id": "fImperialBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
+            "type": "empty"
+         },
+        {
+            "id": "fBaseMagicka:Main",
+            "text": "$Magicka",
+            "type": "slider",
+            "help": "A standard slider with constraints. Range: 50-200, Step: 1.",
+            "valueOptions": {
+                "min": 50,
+                "max": 200,
+                "step": 1,
+                "formatString": "{0}",
+                "defaultValue": 100.0,
+                "sourceType": "ModSettingFloat"                 
           },
           "groupCondition": {"NOT": 1}
         },
         {
-          "id": "fAltmerBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
+            "type": "empty"
+        },
+        {
+            "id": "fBaseHealth:Main",
+            "text": "$Health",
+            "type": "slider",
+            "help": "A standard slider with constraints. Range: 50-200, Step: 1.",
+            "valueOptions": {
+                "min": 50,
+                "max": 200,
+                "step": 1,
+                "formatString": "{0}",
+                "defaultValue": 100.0,
+                "sourceType": "ModSettingFloat"                 
           },
           "groupCondition": {"NOT": 1}
         },
         {
-          "type": "empty"
+            "type": "empty"
         },
         {
-          "id": "fAltmerBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
+            "id": "fBaseStamina:Main",
+            "text": "$Stamina",
+            "type": "slider",
+            "help": "A standard slider with constraints. Range: 50-200, Step: 1.",
+            "valueOptions": {
+                "min": 50,
+                "max": 200,
+                "step": 1,
+                "formatString": "{0}",
+                "defaultValue": 100.0,
+                "sourceType": "ModSettingFloat"                 
           },
           "groupCondition": {"NOT": 1}
         },
         {
-          "text": "Khajiit",
-          "type": "header"
+            "type": "empty"
         },
         {
-          "id": "fAltmerBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
+            "id": "fBaseCarryWeight:Main",
+            "text": "Carry Weight",
+            "type": "slider",
+            "help": "A standard slider with constraints. Range: 50-200, Step: 1.",
+            "valueOptions": {
+                "min": 50,
+                "max": 400,
+                "step": 1,
+                "formatString": "{0}",
+                "defaultValue": 300.0,
+                "sourceType": "ModSettingFloat"                 
         },
-        {
-          "id": "fKhajiitBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fKhajiitBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "text": "Argonian",
-          "type": "header"
-        },
-        {
-          "id": "fKhajiitBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "id": "fArgonianBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fArgonianBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "text": "Nord",
-          "type": "header"
-        },
-        {
-          "id": "fArgonianBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "id": "fNordBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fNordBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "text": "Bosmer",
-          "type": "header"
-        },
-        {
-          "id": "fNordBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "id": "fBosmerBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fBosmerBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "text": "Orsimer",
-          "type": "header"
-        },
-        {
-          "id": "fBosmerBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "id": "fOrsimerBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fOrsimerBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "text": "Breton",
-          "type": "header"
-        },
-        {
-          "id": "fOrsimerBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "id": "fBretonBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fBretonBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "text": "Redguard",
-          "type": "header"
-        },
-        {
-          "id": "fBretonBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "id": "fRedguardBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fRedguardBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "text": "Dunmer",
-          "type": "header"
-        },
-        {
-          "id": "fRedguardBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "id": "fDunmerBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fDunmerBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          } ,
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "text": "Custom Race",
-          "type": "header"
-        },
-        {
-          "id": "fDunmerBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "id": "fCustomRaceBaseMagicka:Main",
-          "text": "Magicka",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fCustomRaceBaseHealth:Main",
-          "text": "Health",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
-        },
-        {
-          "type": "empty"
-        },
-        {
-          "id": "fCustomRaceBaseStamina:Main",
-          "text": "Stamina",
-          "type": "slider",
-          "help": "A standard slider with constraints. Range: 0-200, Step: 1.",
-          "valueOptions": {
-            "min": 10,
-            "max": 200,
-            "step": 1,
-            "formatString": "{0}",
-            "defaultValue": 100.0,
-				    "sourceType": "ModSettingFloat"                 
-          },
-          "groupCondition": {"NOT": 1}
+        "groupCondition": {"NOT": 1}
         }
-    ]  
-}
+      ]  
+  }
