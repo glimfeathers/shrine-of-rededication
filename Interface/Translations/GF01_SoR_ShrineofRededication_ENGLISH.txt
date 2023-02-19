@@ -1,0 +1,3 @@
+$Magicka Magicka
+$Health Health
+$Stamina Stamina

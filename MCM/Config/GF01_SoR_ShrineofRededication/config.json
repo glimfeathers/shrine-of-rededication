@@ -1,0 +1,119 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Exit-9B/MCM-Helper/main/docs/config.schema.json",
+    "modName": "GF01_SoR_ShrineofRededication",          
+    "displayName": "Shrine of Rededication",   
+    "minMcmVersion": 13,                       
+    "content": [
+        {
+            "text": "Preset",
+            "type": "header"
+        },
+        {
+            "text": "Animations",
+            "type": "header"
+        },
+        {
+            "text": "Vanilla",
+            "type": "toggle",
+            "help": "This option should be enabled if you're playing with vanilla attribute values. Disable it if you're playing Survival Mode or with any mod that changes the base value of your Health, Magicka, Stamina or Carry Weight.",
+            "valueOptions": {
+                "sourceType": "GlobalValue",
+                "sourceForm": "GF01_SoR_ShrineofRededication.esp|00816",
+                "defaultValue": 1
+            },
+            "groupControl": 1
+        },
+        {
+            "text": "Enable",
+            "type": "toggle",
+            "help": "This option should be enabled if you want the IdlePray animation to play when interacting with the Shrine of Rededication. Disable it if you don't want it.",
+            "valueOptions": {
+                "sourceType": "GlobalValue",
+                "sourceForm": "GF01_SoR_ShrineofRededication.esp|00817",
+                "defaultValue": 0
+            }    
+        },
+        {
+           "type": "empty"
+        },
+        {
+           "type": "empty"
+        },
+        {
+            "text": "Advanced Settings",
+            "type": "header"
+        },
+        {
+            "type": "empty"
+         },
+        {
+            "text": "$Magicka",
+            "type": "slider",
+            "help": "Choose the value of your base Magicka so that it is in accordance with other mods that change this value.",
+            "valueOptions": {
+                "sourceType": "GlobalValue",
+                "sourceForm":"GF01_SoR_ShrineofRededication.esp|00818",
+                "min": 50,
+                "max": 200,
+                "step": 1,
+                "formatString": "{0}",
+                "defaultValue": 100.0           
+          },
+          "groupCondition": {"NOT": 1}
+        },
+        {
+            "type": "empty"
+        },
+        {
+            "text": "$Health",
+            "type": "slider",
+            "help": "Choose the value of your base Health so that it is in accordance with other mods that change this value.",
+            "valueOptions": {
+                "sourceType": "GlobalValue",
+                "sourceForm": "GF01_SoR_ShrineofRededication.esp|00819",
+                "min": 50,
+                "max": 200,
+                "step": 1,
+                "formatString": "{0}",
+                "defaultValue": 100.0            
+          },
+          "groupCondition": {"NOT": 1}
+        },
+        {
+            "type": "empty"
+        },
+        {
+            "text": "$Stamina",
+            "type": "slider",
+            "help": "Choose the value of your base Stamina so that it is in accordance with other mods that change this value.",
+            "valueOptions": {
+                "sourceType": "GlobalValue",
+                "sourceForm": "GF01_SoR_ShrineofRededication.esp|0081a",
+                "min": 50,
+                "max": 200,
+                "step": 1,
+                "formatString": "{0}",
+                "defaultValue": 100.0
+           },
+          "groupCondition": {"NOT": 1}
+         },
+        {
+            "type": "empty"
+        },
+        {
+            "text": "Carry Weight",
+            "type": "slider",
+            "help": "Choose the value of your base Carry Weight so that it is in accordance with other mods that change this value.",
+            "valueOptions": {
+                "sourceType": "GlobalValue",
+                "sourceForm": "GF01_SoR_ShrineofRededication.esp|0081b",
+                "min": 50,
+                "max": 400,
+                "step": 1,
+                "formatString": "{0}",
+                "defaultValue": 300.0
+            },
+        "groupCondition": {"NOT": 1}
+    }
+    ]  
+  }
